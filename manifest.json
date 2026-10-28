@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "CodeSync",
+  "version": "0.1.0",
+  "description": "Push your LeetCode, GeeksforGeeks and Codeforces solutions to GitHub.",
+  "icons": { "16": "logo.png", "32": "logo.png", "48": "logo.png", "128": "logo.png" },
+  "permissions": ["storage", "scripting", "alarms", "cookies", "declarativeNetRequestWithHostAccess"],
+  "host_permissions": ["https://leetcode.com/*", "https://www.geeksforgeeks.org/*", "https://codeforces.com/*"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "options.html", "default_icon": "logo.png" },
+  "options_page": "options.html",
+  "content_scripts": [
+    { "matches": ["https://leetcode.com/*"], "js": ["leetcode.js"] },
+    { "matches": ["https://www.geeksforgeeks.org/problems/*"], "js": ["lib.js", "gfg.js"] },
+    { "matches": ["https://codeforces.com/*"], "js": ["codeforces.js"] }
+  ]
+}
